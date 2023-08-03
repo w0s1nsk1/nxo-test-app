@@ -14,6 +14,6 @@ export default [
     },
     {
         text: 'Zawód',
-        value: 'job',
+        value: 'company.title',
     },
 ]

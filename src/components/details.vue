@@ -9,11 +9,11 @@
         ></v-progress-linear>
 
         <v-card-title>
-
+            {{ this.item.firstName }} {{ this.item.lastName }}
         </v-card-title>
 
         <v-card-text>
-
+            {{ this.item }}
         </v-card-text>
     </v-card>
 </template>
@@ -37,7 +37,7 @@
         },
         methods: {
             getClient() {
-                this.$store.dispatch('getClient', {id: this.id});
+                this.$store.dispatch('getClient', this.id);
             },
         },
         watch: {
