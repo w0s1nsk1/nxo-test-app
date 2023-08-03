@@ -42,7 +42,6 @@ export default new Vuex.Store({
         async getClient({commit}, id) {
             commit('getRequest');
             const payload = await getClient(id);
-            console.log(payload);
             if (payload) {
                 commit('getSuccess', payload);
             }

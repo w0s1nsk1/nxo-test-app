@@ -13,7 +13,16 @@
         </v-card-title>
 
         <v-card-text>
-            {{ this.item }}
+            <v-list class="data-list">
+                <v-list-item>Maiden name: {{ this.item.maidenName }}</v-list-item>
+                <v-list-item>Age: {{ this.item.age }}</v-list-item>
+                <v-list-item>Gender: {{ this.item.gender }}</v-list-item>
+                <v-list-item>Email: {{ this.item.email }}</v-list-item>
+                <v-list-item>Phone Number: {{ this.item.phone }}</v-list-item>
+                <v-list-item>Username: {{ this.item.username }}</v-list-item>
+                <v-list-item>Birth date: {{ this.item.birthDate }}</v-list-item>
+                <v-list-item>Address: {{ this.item.address.address }}</v-list-item>
+            </v-list>
         </v-card-text>
     </v-card>
 </template>
@@ -51,5 +60,7 @@
 </script>
 
 <style scoped lang="scss">
-
+    .data-list {
+        font-size: 20px;
+    }
 </style>
