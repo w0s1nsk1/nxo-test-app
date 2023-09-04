@@ -30,7 +30,7 @@
                 </template>
 
                 <template v-slot:item.name="{item}">
-                    <a v-on:click="openDetails(item.id)">{{ item.name }}</a>
+                    <a v-on:click="openDetails(item.id)">{{ item.firstName }}</a>
                 </template>
 
             </v-data-table>

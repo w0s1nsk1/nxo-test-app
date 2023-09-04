@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {fetchClients} from '../services';
+import {fetchClients, getClient} from '../services';
 
 Vue.use(Vuex)
 
@@ -20,13 +20,30 @@ export default new Vuex.Store({
             state.loading = false;
             state.data = data;
         },
+        getRequest(state) {
+            state.loadingItem = true;
+            state.current = null;
+        },
+        getSuccess(state, data) {
+            state.loadingItem = false;
+            state.current = data;
+        }
     },
     actions: {
         async fetchClients({commit}) {
             commit('request');
             const payload = await fetchClients()
             if (payload) {
-                commit('success', payload)
+                commit('success', payload.users)
+            }
+
+            return payload;
+        },
+        async getClient({commit}, id) {
+            commit('getRequest');
+            const payload = await getClient(id);
+            if (payload) {
+                commit('getSuccess', payload);
             }
 
             return payload;
