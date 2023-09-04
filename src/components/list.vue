@@ -66,7 +66,7 @@
         methods: {
             openDetails(id) {
                 this.detailsDialog = true;
-                this.id = id;
+                this.id = id-1;
             }
         },
         computed: {

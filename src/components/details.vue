@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-progress-linear
-                :active="loading"
+                :active="this.loading"
                 :indeterminate="true"
                 class="ma-0"
                 height="2"
@@ -9,11 +9,17 @@
         ></v-progress-linear>
 
         <v-card-title>
-
+            {{ this.item.name }}
         </v-card-title>
-
         <v-card-text>
-
+            <v-list>
+                <v-list-item>
+                    e-mail: {{ this.item.email }}
+                </v-list-item>
+                <v-list-item>
+                    job: {{ this.item.job }}
+                </v-list-item>
+            </v-list>
         </v-card-text>
     </v-card>
 </template>

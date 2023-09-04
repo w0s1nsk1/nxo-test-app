@@ -19,6 +19,11 @@
                 <v-app-bar>
                     <b>EXAM APP</b>
                 </v-app-bar>
+                <v-list nav>
+                    <v-list-item link :to="{ name: 'ClientsList' }">
+                        <v-list-title>Clients List</v-list-title>
+                    </v-list-item>
+                </v-list>
             </v-navigation-drawer>
             <v-layout>
                 <router-view/>
