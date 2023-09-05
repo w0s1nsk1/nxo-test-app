@@ -23,11 +23,15 @@
                     <v-list-item link :to="{ name: 'ClientsList' }">
                         <v-list-title>Clients List</v-list-title>
                     </v-list-item>
+                    <v-list-item @click="testError()">Error</v-list-item> <!-- DEBUG -->
                 </v-list>
             </v-navigation-drawer>
             <v-layout>
                 <router-view/>
             </v-layout>
+            <v-dialog v-model="showAlert">
+                <v-alert type="error">{{ this.errors }}</v-alert>
+            </v-dialog>
         </v-content>
     </v-app>
 </template>
@@ -36,5 +40,39 @@
 
     export default {
         name: 'App',
+        computed: {
+                errors: function () {
+                    return this.$store.state.errorMessage
+            }
+        },
+        
+        methods:{
+            testError(){ // DEBUG
+                this.$store.dispatch('raiseError', 'example error')
+            },
+        },
+        watch:{
+            showAlert(to){
+                if (to==false){
+                this.$store.dispatch('clearError')
+                }
+            },
+            errors(to){
+                if (to!=""){
+                this.showAlert=true
+                }
+            }
+        },
+        data (){
+            return {
+                showAlert: false
+            }
+        }
     };
 </script>
+
+<style>
+.v-alert{
+    margin: 0 !important;
+}
+</style>

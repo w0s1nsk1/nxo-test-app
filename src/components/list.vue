@@ -66,7 +66,7 @@
         methods: {
             openDetails(id) {
                 this.detailsDialog = true;
-                this.id = id-1;
+                this.id = id;
             }
         },
         computed: {
@@ -75,6 +75,22 @@
             },
             loading: function () {
                 return this.$store.state.loading;
+            },
+            errors: function (){
+                return this.$store.state.errorMessage
+            }
+            
+        },
+        watch: {
+            detailsDialog(to) {
+                if(to && this.errors != ""){
+                    this.detailsDialog = false
+                }
+            },
+            errors(to){
+                if(to=="CLIENT_DETAILS_FAIL"){
+                    this.detailsDialog = false
+                }
             }
         }
     };

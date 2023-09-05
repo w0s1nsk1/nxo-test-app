@@ -8,7 +8,7 @@ import axios from 'axios';
 
 Vue.config.productionTip = false;
 
-axios.defaults.baseURL = 'http://192.168.180.2:9000';
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
 Vue.prototype.$http = axios;
 

@@ -13,7 +13,7 @@ export default [
         value: 'email',
     },
     {
-        text: 'Zawód',
-        value: 'job',
+        text: 'Telefon',
+        value: 'phone',
     },
 ]

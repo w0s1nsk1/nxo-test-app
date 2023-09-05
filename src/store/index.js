@@ -10,6 +10,7 @@ export default new Vuex.Store({
         loading: false,
         current: null,
         loadingItem: false,
+        errorMessage: ""
     },
     mutations: {
         request(state) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
         getSuccess(state, data) {
             state.current = data;
             state.loadingItem = false;
+        },
+        raiseError(state,message) {
+            state.errorMessage = message;
         }
     },
     actions: {
@@ -35,6 +39,8 @@ export default new Vuex.Store({
             const payload = await fetchClients()
             if (payload) {
                 commit('success', payload)
+            }else{
+                commit('raiseError', 'Loading Clients failed')
             }
 
             return payload;
@@ -42,10 +48,19 @@ export default new Vuex.Store({
         async getClient({commit}, {id}) {
             commit('getRequest');
             const payload = await getClient(id)
-            commit ('getSuccess', payload)
-
+            if (payload) {
+                commit ('getSuccess', payload)
+            }else{
+                commit('raiseError', "CLIENT_DETAILS_FAIL")
+            }
             return payload
 
+        },
+        clearError({ commit }){
+            commit('raiseError', '')
+        },
+        raiseError({ commit }, message) {
+            commit('raiseError', message)
         }
     },
 });
